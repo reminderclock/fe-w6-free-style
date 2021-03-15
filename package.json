@@ -1,0 +1,24 @@
+{
+  "name": "fe-w6-free-style",
+  "version": "1.0.0",
+  "description": "## 배민 어플로 서브웨이 배달 주문 UI(음식 주문하는 소비자 측) 분석",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/www",
+    "build:sass": "sass --watch public/scss:public/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reminderclock/fe-w6-free-style.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reminderclock/fe-w6-free-style/issues"
+  },
+  "homepage": "https://github.com/reminderclock/fe-w6-free-style#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

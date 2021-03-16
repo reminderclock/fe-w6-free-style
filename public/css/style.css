@@ -1,3 +1,13 @@
+* {
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
 body {
   color: #333;
   font-size: 16px;
@@ -5,9 +15,87 @@ body {
   line-height: 125%;
 }
 
-#main {
-  width: 100%;
-  max-width: 960px;
+header {
+  padding: 0 20px;
+}
+header .nav__bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+header .main-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: 2px solid gray;
+  padding: 10px 5px;
+}
+header .main-info .main__title {
+  font-size: 30px;
+}
+header .main__star {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin-top: 10px;
+}
+header .main__star li {
+  margin-right: 10px;
+}
+header .main-recent {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+header .recent__list {
+  margin: 0 3px;
+}
+header .etc__list {
+  display: flex;
+  justify-self: start;
+  margin: 0 30px;
+}
+header .etc__icon {
+  margin-right: 5px;
+}
+header .main-etc {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+header .sub-info {
+  padding: 10px;
+}
+header .sub-info ul {
+  display: flex;
+  justify-self: start;
+  position: relative;
+}
+header .sub-info ul li:nth-child(2) {
+  position: absolute;
+  margin-left: 120px;
+}
+header .sub-info ul li:nth-child(3) {
+  position: absolute;
+  margin-left: 190px;
+}
+
+.tab-menu {
+  display: flex;
+  justify-content: space-between;
+}
+.tab-menu li {
+  padding: 5px 47.5px;
+  border: 1px solid black;
+}
+
+.best-menu {
+  border: 1px solid #ffd700;
+  height: 200px;
+  margin: 0 20px;
+  border-radius: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

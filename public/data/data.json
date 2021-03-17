@@ -1,0 +1,156 @@
+{
+    "sand__short__set": [
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 1,
+          "name": "에그마요",
+          "cost" : 6500,
+          "imgurl": "../images/short_set_1.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 2,
+          "name": "햄",
+          "cost" : 6900,
+          "imgurl": "../images/short_set_2.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 3,
+          "name": "참치",
+          "cost" : 7000,
+          "imgurl": "../images/short_set_3.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 4,
+          "name": "미트볼",
+          "cost" : 7400,
+          "imgurl": "../images/short_set_4.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 5,
+          "name": "비엘티",
+          "cost" : 7400,
+          "imgurl": "../images/short_set_5.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "name": "이탈리안 비엠티",
+          "menuNum": 6,
+          "cost" : 7400,
+          "imgurl": "../images/short_set_6.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 7,
+          "name": "베지",
+          "cost" : 6100,
+          "imgurl": "../images/short_set_7.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 8,
+          "name": "터키",
+          "cost" : 7400,
+          "imgurl": "../images/short_set_8.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 9,
+          "name": "서브웨이 클럽",
+          "cost" : 7900,
+          "imgurl": "../images/short_set_9.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 11,
+          "name": "로티세리",
+          "cost" : 8100,
+          "imgurl": "../images/short_set_11.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 12,
+          "name": "로스트치킨",
+          "cost" : 8100,
+          "imgurl": "../images/short_set_12.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 13,
+          "name": "치킨데리야끼",
+          "cost" : 7900,
+          "imgurl": "../images/short_set_13.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 15,
+          "name": "스파이시 이탈리안",
+          "cost" : 7900,
+          "imgurl": "../images/short_set_15.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 17,
+          "name": "서브웨이 멜트",
+          "cost" : 8100,
+          "imgurl": "../images/short_set_17.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 18,
+          "name": "풀드포크",
+          "cost" : 8100,
+          "imgurl": "../images/short_set_18.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 19,
+          "name": "스테이크앤치즈",
+          "cost" : 8700,
+          "imgurl": "../images/short_set_19.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 20,
+          "name": "터키베이컨 아보카도",
+          "cost" : 8700,
+          "imgurl": "../images/short_set_20.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 21,
+          "name": "쉬림프",
+          "cost" : 7900,
+          "imgurl": "../images/short_set_21.jpg"
+        },
+        { 
+          "type": "세트",
+          "length": "15cm",
+          "menuNum": 23,
+          "name": "K",
+          "cost" : 8200,
+          "imgurl": "../images/short_set_23.jpg"
+        }
+      ]
+}

@@ -2,7 +2,6 @@ const bestMenuContainer = document.querySelector('.best-menu__container');
 const menuContainer = document.querySelector('.menu__container');
 const toogleBtn = document.querySelector('.menu__title__toggle');
 
-// nth-child(6)
 const local = "http://localhost"
 const port = 3000;
 const menuPath = "/data/data.json";
@@ -15,8 +14,7 @@ function loadMenuData() {
 }
 function displayBestMenu(menu) {
     const bestMenu = menu.filter(e => bestNum.includes(e.menuNum));
-    console.log(bestMenu);
-    let a = bestMenu.map(e => creatBestMenu(e));
+    let eachInfo = bestMenu.map(e => creatBestMenu(e));
 }
 function numToCash(num) {
     return num.toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );

@@ -120,9 +120,47 @@ header .sub-info ul li:nth-child(3) {
 .best-menu .best-menu__bundle:nth-child(6) {
   border-bottom: 0px;
 }
+.best-menu .menu-name {
+  font-weight: 900;
+  margin-bottom: 5px;
+}
 .best-menu .best-menu__img {
   width: 100px;
   height: 100px;
+}
+
+.sandwich-short__set {
+  padding-top: 20px;
+}
+.sandwich-short__set .menu__title {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ddd;
+}
+.sandwich-short__set .best-menu__bundle img {
+  float: right;
+  border-radius: 5px;
+}
+.sandwich-short__set .best-menu__bundle {
+  overflow: hidden;
+  border-bottom: 1px solid #bfad95;
+  padding: 10px;
+}
+.sandwich-short__set .best-menu__bundle:nth-child(6) {
+  border-bottom: 0px;
+}
+.sandwich-short__set .menu-name {
+  font-weight: 900;
+  margin-bottom: 5px;
+}
+.sandwich-short__set .best-menu__img {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #ddd;
+}
+.sandwich-short__set .menu__container.active {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

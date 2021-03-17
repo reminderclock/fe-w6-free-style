@@ -5,6 +5,7 @@ $font_family: Arial, sans-serif;
 $font_size: 16px;
 $line_height: percentage(20px / $font_size);
 
+$menu-bar_color: #ddd;
 $best-menu_color: #bfad95;
 * {
   font-size: 16px;
@@ -135,8 +136,52 @@ header {
   .best-menu__bundle:nth-child(6) {
     border-bottom: 0px;
   }
+  .menu-name {
+    font-weight: 900;
+    margin-bottom: 5px;
+  }
   .best-menu__img {
     width: 100px;
     height: 100px;
+  }
+}
+
+.sandwich-short__set {
+  padding-top: 20px;
+  // background-color: yellow;
+  .menu__title {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    // border: 1px solid red;
+    background-color: $menu-bar_color;
+  }
+  .best-menu__bundle img {
+    float: right;
+    border-radius: 5px;
+    // position: absolute;
+  }
+  .best-menu__bundle {
+    // position: relative;
+
+    overflow: hidden;
+    border-bottom: 1px solid $best-menu_color;
+    padding: 10px;
+    // height: 120px;
+  }
+  .best-menu__bundle:nth-child(6) {
+    border-bottom: 0px;
+  }
+  .menu-name {
+    font-weight: 900;
+    margin-bottom: 5px;
+  }
+  .best-menu__img {
+    width: 100px;
+    height: 100px;
+    border: 1px solid $menu-bar_color;
+  }
+  .menu__container.active {
+    display: none;
   }
 }

@@ -4,6 +4,8 @@ $link_color: #00c;
 $font_family: Arial, sans-serif;
 $font_size: 16px;
 $line_height: percentage(20px / $font_size);
+
+$best-menu_color: #bfad95;
 * {
   font-size: 16px;
   font-family: Arial, sans-serif;
@@ -82,7 +84,6 @@ header {
     display: flex;
     justify-self: start;
     position: relative;
-
   }
   .sub-info ul li:nth-child(2) {
     // margin-right: 10px;
@@ -103,9 +104,39 @@ header {
     border: 1px solid black;
   }
 }
+.notice-info {
+  padding: 20px;
+}
 .best-menu {
-  border: 1px solid #ffd700;
-  height: 200px;
+  border: 3px solid $best-menu_color;
   margin: 0 20px;
   border-radius: 10px;
+  padding: 10px 0;
+  background-color: #ddd;
+  .best-menu__title {
+    text-align: center;
+    color: $best-menu_color;
+    font-size: 25px;
+    padding: 10px 0;
+  }
+  .best-menu__bundle img {
+    float: right;
+    border-radius: 5px;
+    // position: absolute;
+  }
+  .best-menu__bundle {
+    // position: relative;
+
+    overflow: hidden;
+    border-bottom: 1px solid $best-menu_color;
+    padding: 10px;
+    // height: 120px;
+  }
+  .best-menu__bundle:nth-child(6) {
+    border-bottom: 0px;
+  }
+  .best-menu__img {
+    width: 100px;
+    height: 100px;
+  }
 }

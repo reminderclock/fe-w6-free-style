@@ -5,10 +5,10 @@ export class MakeShortSetMenu{
         this.selector = selector;
         this.toogleBtn = toogleBtn;
     }
-    init() {
+        init() {    
         this.toogleBtn.addEventListener('click', () => {
-            this.selector.classList.toggle('active')
-          });
+            this.selector.classList.toggle('active');
+        })
         return this.data.forEach(e => this.creatMenu(e));
     }
     creatMenu(e) {

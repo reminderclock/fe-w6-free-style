@@ -1,3 +1,4 @@
+import {makeEachMenu} from './util/htmlTemplate.js';
 export class MakeShortSetMenu{
     constructor(data, selector, toogleBtn) {
         this.data = data;
@@ -12,13 +13,7 @@ export class MakeShortSetMenu{
     }
     creatMenu(e) {
         let cost = this.numToCash(e.cost);
-        this.selector.innerHTML += `
-        <a href="selectOption.html">
-        <ul class="best-menu__bundle">
-        <img src="${e.imgurl}" alt="${e.name}" class="best-menu__img" />
-        <li class="menu-name">${e.name}(${e.length}${e.type})</li>
-        <li class="menu-cost">${cost}원</li>
-        </ul></a>`;
+        this.selector.innerHTML += makeEachMenu(e.imgurl, e.name, e.length, e.type, cost);
     }
     numToCash(num) {
         return num.toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );

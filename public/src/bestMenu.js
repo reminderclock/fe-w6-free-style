@@ -1,4 +1,6 @@
 import {bestMenu} from './util/parser.js';
+import {makeEachMenu} from './util/htmlTemplate.js';
+console.log(makeEachMenu('a','b','c','d'));
 
 class MakeBestMenu {
     constructor(data, selector) {
@@ -10,12 +12,7 @@ class MakeBestMenu {
     }
     creatBestMenu(e) {
         let cost = this.numToCash(e.cost);
-        this.selector.innerHTML += `
-        <ul class="best-menu__bundle">
-        <img src="${e.imgurl}" alt="${e.name}" class="best-menu__img" />
-        <li class="menu-name">${e.name}(${e.length}${e.type})</li>
-        <li class="menu-cost">${cost}원</li>
-        </ul>`;
+        this.selector.innerHTML += makeEachMenu(e.imgurl, e.name, e.length, e.type, cost);
     }
     numToCash(num) {
         return num.toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );

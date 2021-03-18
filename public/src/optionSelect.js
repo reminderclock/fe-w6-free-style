@@ -3,7 +3,6 @@ export class MakeselectOption{
     constructor(data, selector) {
         this.data = data;
         this.selector = selector;
-        console.log(this.data);
     }
     init() {
         return this.data.forEach(e => this.creatMenu(e));

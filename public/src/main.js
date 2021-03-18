@@ -25,19 +25,16 @@ loadMenuData()
     createShortSetMenu.init();
 
     shortSetContainer.addEventListener('click', ({target}) => {
-        console.log(target.closest('.best-menu__bundle').children[1].innerText);
         let menuTitle = target.closest('.best-menu__bundle').children[1].innerText;
         if(target.closest('.best-menu__bundle').className === 'best-menu__bundle') {
             let selectData = menu.filter(e => menuTitle.includes(e.name));
             
             mainView.classList.toggle('active');
-            console.log('sss')
             const createOption = new MakeselectOption(selectData, optionView);
             createOption.init();
 
         }
     })
-    console.log(menu.map(e => e.name))
 })
 
 

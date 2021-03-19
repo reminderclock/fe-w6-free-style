@@ -7,6 +7,7 @@ $line_height: percentage(20px / $font_size);
 
 $menu-bar_color: #ddd;
 $best-menu_color: #bfad95;
+$none-active: #d3d3d3;
 * {
   font-size: 16px;
   font-family: Arial, sans-serif;
@@ -27,13 +28,13 @@ body {
   line-height: $line_height;
 }
 
+.nav__bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
 header {
   padding: 0 20px;
-  .nav__bar {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-  }
   .main-info {
     display: flex;
     flex-direction: column;
@@ -169,9 +170,6 @@ header {
     padding: 10px;
     // height: 120px;
   }
-  .best-menu__bundle:nth-child(6) {
-    border-bottom: 0px;
-  }
   .menu-name {
     font-weight: 900;
     margin-bottom: 5px;
@@ -181,7 +179,61 @@ header {
     height: 100px;
     border: 1px solid $menu-bar_color;
   }
-  .menu__container.active {
+  .sandwich-short__set__container.active {
     display: none;
+  }
+}
+.main-view.active {
+  display: none;
+}
+
+.option-view {
+  text-align: center;
+  //   padding: 20px;
+  .inner-menu__img {
+    text-align: center;
+    width: 300px;
+    height: 200px;
+  }
+  .inner-menu__name {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    border: 1px solid $none-active;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 20px;
+  }
+  .inner__default {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 20px;
+    // border-bottom: 1px solid $best-menu_color;
+    span {
+      font-size: 20px;
+    }
+  }
+  .bread-type__info,
+  .chesse-type__info,
+  .add-type__info,
+  .ingredient-type__info,
+  .veggie-type__info,
+  .source-type__info,
+  .cookie-type__info,
+  .drink-type__info,
+  .toast-type__info {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .push-box {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: whitesmoke;
+    height: 50px;
+    .push-box__container {
+      background-color: $menu-bar_color;
+    }
   }
 }

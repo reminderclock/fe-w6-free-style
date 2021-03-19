@@ -1,0 +1,287 @@
+{
+    "bread": [
+        { 
+            "name": "bread",
+            "type": "화이트",
+            "cost": 0
+        },
+        { 
+            "name": "bread",
+            "type": "파마산 오레가노",
+            "cost": 0
+        },
+        { 
+            "name": "bread",
+            "type": "휘트",
+            "cost": 0
+        },
+        { 
+            "name": "bread",
+            "type": "허니오트",
+            "cost": 0
+        },
+        { 
+            "name": "bread",
+            "type": "하티",
+            "cost": 0
+        },
+        { 
+            "name": "bread",
+            "type": "플랫브래드",
+            "cost": 0
+        }
+    ],
+    "chesse": [
+        {
+            "name": "chesse",
+            "type": "아메리칸치즈",
+            "cost": 0
+        },
+        { 
+            "name": "chesse",
+            "type": "슈레드 치즈",
+            "cost": 0
+        },
+        { 
+            "name": "chesse",
+            "type": "모차렐라 치즈",
+            "cost": 0
+        },
+        { 
+            "name": "chesse",
+            "type": "치즈 제외",
+            "cost": 0
+        }
+    ],
+    "addIngredient": [
+        { 
+            "name": "ingredient",
+            "type": "미트추가(동일메뉴)",
+            "cost": 1800
+        },
+        { 
+            "name": "ingredient",
+            "type": "에그마요 추가",
+            "cost": 1600
+        },
+        { 
+            "name": "ingredient",
+            "type": "페퍼로니 추가",
+            "cost": 900
+        },
+        { 
+            "name": "ingredient",
+            "type": "베이컨 추가",
+            "cost": 900
+        },
+        { 
+            "name": "ingredient",
+            "type": "아보카도 추가",
+            "cost": 1300
+        },
+        { 
+            "name": "ingredient",
+            "type": "오믈렛 추가",
+            "cost": 1200
+        },
+        { 
+            "name": "ingredient",
+            "type": "치즈(동일)추가",
+            "cost": 900
+        }
+    ],
+    "toast":[
+        {
+            "name": "toast",
+            "type": "토스팅",
+            "cost": 0
+        },
+        {
+            "name": "toast",
+            "type": "토스팅 안 함",
+            "cost": 0
+        }
+    ],
+    "exceptVeggie":[
+        {
+            "name": "veggie",
+            "type": "양상추 제외",
+            "cost": 0
+        },
+        {
+            "name": "veggie",
+            "type": "토마토 제외",
+            "cost": 0
+        },
+        {
+            "name": "veggie",
+            "type": "오이 제외",
+            "cost": 0
+        },
+        {
+            "name": "veggie",
+            "type": "피망 제외",
+            "cost": 0
+        },
+        {
+            "name": "veggie",
+            "type": "피클 제외",
+            "cost": 0
+        },
+        {
+            "name": "veggie",
+            "type": "올리브 제외",
+            "cost": 0
+        },
+        {
+            "name": "veggie",
+            "type": "할라피뇨 제외",
+            "cost": 0
+        }
+    ],
+    "source": [
+        {
+            "name": "source",
+            "type":"추천 소스",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"소스 넣지 않음",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"머스타드",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"레드와인식초",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"스윗 어니언",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"허니머스타드",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"스윗 어니언",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"허니머스타드",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"스윗칠리",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"스모크 바베큐",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"랜치 드레싱",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"마요네즈",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"핫칠리",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"사우스웨스트",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"홀스레디쉬",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"올리브오일",
+            "cost": 0
+        },
+        {
+            "name": "source",
+            "type":"소금",
+            "cost": 0
+        }
+    ],
+    "cookie": [
+        {
+            "name": "cookie",
+            "type": "초코칩 쿠키",
+            "cost": 0
+        },
+        {
+            "name": "cookie",
+            "type": "더블 초코칩 쿠키",
+            "cost": 0
+        },
+        {
+            "name": "cookie",
+            "type": "오트밀 레이즌 쿠키",
+            "cost": 0
+        },
+        {
+            "name": "cookie",
+            "type": "라즈베리 치즈케잌 쿠키",
+            "cost": 0
+        },
+        {
+            "name": "cookie",
+            "type": "화이트 초코 마카다미아 쿠키",
+            "cost": 0
+        },
+        {
+            "name": "cookie",
+            "type": "민트초코 쿠키",
+            "cost": 0
+        },
+        {
+            "name": "cookie",
+            "type": "칩(랜덤발송)",
+            "cost": 0
+        }
+    ],
+    "drink": [
+        {
+            "name" : "drink",
+            "type": "코카콜라",
+            "size": "355ml",
+            "cost": 0
+        },
+        {
+            "name" : "drink",
+            "type": "스프라이트",
+            "size": "355ml",
+            "cost": 0
+        },
+        {
+            "name" : "drink",
+            "type": "닥터페퍼",
+            "size": "355ml",
+            "cost": 0
+        }
+    ]
+
+}

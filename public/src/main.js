@@ -1,53 +1,51 @@
-const bestMenuContainer = document.querySelector('.best-menu__container');
-const menuContainer = document.querySelector('.menu__container');
-const toogleBtn = document.querySelector('.menu__title__toggle');
 
-const local = "http://localhost"
-const port = 3000;
-const menuPath = "/data/data.json";
-const bestNum = [6,1,19,9,18,11];
+import {MakeBestMenu} from './bestMenu.js';
+import {MakeShortSetMenu} from './shortSetMenu.js';
+import {local, port, menuPath, sandOption} from './util/data.js';
+import {MakeselectOption} from './optionSelect.js';
+const bestMenuContainer = document.querySelector('.best-menu__container');
+const shortSetContainer = document.querySelector('.sandwich-short__set__container');
+
+const toogleBtn = document.querySelector('.menu__title__toggle');
+const mainView = document.querySelector('.main-view');
+const optionView = document.querySelector('.option-view');
 
 function loadMenuData() {
     return fetch(`${local}:${port}${menuPath}`)
     .then(response => response.json())
     .then(json => json.sand__short__set);
 }
-function displayBestMenu(menu) {
-    const bestMenu = menu.filter(e => bestNum.includes(e.menuNum));
-    let eachInfo = bestMenu.map(e => creatBestMenu(e));
-}
-function numToCash(num) {
-    return num.toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
-}
-function creatBestMenu(e) {
-    let cost = numToCash(e.cost);
-    bestMenuContainer.innerHTML += `
-    <ul class="best-menu__bundle">
-    <img src="${e.imgurl}" alt="${e.name}" class="best-menu__img" />
-    <li class="menu-name">${e.name}(${e.length})</li>
-    <li class="menu-cost">${cost}원</li>
-    </ul>`;
+
+function loadOptionData() {
+    return fetch(`${local}:${port}${sandOption}`)
+    .then(response => response.json());
+    // .then(json => json.sand__short__set);
 }
 
-function creatMenu(e) {
-    let cost = numToCash(e.cost);
-    menuContainer.innerHTML += `
-    <ul class="best-menu__bundle">
-    <img src="${e.imgurl}" alt="${e.name}" class="best-menu__img" />
-    <li class="menu-name">${e.name}(${e.length})</li>
-    <li class="menu-cost">${cost}원</li>
-    </ul>`;
-}
-function displayShortSet(menu) {
-    let a = menu.map(e => creatMenu(e));
-}
 loadMenuData()
 .then((menu) => {
-    displayBestMenu(menu);
-    displayShortSet(menu);
+    const createBestMenu = new MakeBestMenu(menu, bestMenuContainer);
+    createBestMenu.init();
+
+    const createShortSetMenu = new MakeShortSetMenu(menu, shortSetContainer, toogleBtn)
+    createShortSetMenu.init();
+
+    shortSetContainer.addEventListener('click', ({target}) => {
+        let menuTitle = target.closest('.best-menu__bundle').children[1].innerText;
+        if(target.closest('.best-menu__bundle').className === 'best-menu__bundle') {
+            let selectData = menu.filter(e => menuTitle.includes(e.name));
+            
+            loadOptionData()
+            .then((category)=> {
+                mainView.classList.toggle('active');
+                const createOption = new MakeselectOption(selectData, category, optionView);
+                createOption.init();
+            })
+        }
+    })
 })
 
-toogleBtn.addEventListener('click', () => {
-    menuContainer.classList.toggle('active')
-  });
+
+
+
 

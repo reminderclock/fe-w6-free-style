@@ -213,4 +213,27 @@ header {
       font-size: 20px;
     }
   }
+  .bread-type__info,
+  .chesse-type__info,
+  .add-type__info,
+  .ingredient-type__info,
+  .veggie-type__info,
+  .source-type__info,
+  .cookie-type__info,
+  .drink-type__info,
+  .toast-type__info {
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .push-box {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: whitesmoke;
+    height: 50px;
+    .push-box__container {
+      background-color: $menu-bar_color;
+    }
+  }
 }

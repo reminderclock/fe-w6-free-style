@@ -190,5 +190,28 @@ header .sub-info ul li:nth-child(3) {
 .option-view .inner__default span {
   font-size: 20px;
 }
+.option-view .bread-type__info,
+.option-view .chesse-type__info,
+.option-view .add-type__info,
+.option-view .ingredient-type__info,
+.option-view .veggie-type__info,
+.option-view .source-type__info,
+.option-view .cookie-type__info,
+.option-view .drink-type__info,
+.option-view .toast-type__info {
+  margin: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.option-view .push-box {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: whitesmoke;
+  height: 50px;
+}
+.option-view .push-box .push-box__container {
+  background-color: #ddd;
+}
 
 /*# sourceMappingURL=style.css.map */

@@ -16,10 +16,6 @@ export const makeInnerInfo = (imgurl, name, length, type, cost) => `
 <span>${cost}</span>
 </div>`;
 
-// export const breadBundle = (name) => `
-// <div class="bread-bundle">
-// <div class="bread__title">${name}</div>
-// </div>`;
 
 export const breadBundle = () => `
 <div class="bread-bundle">
@@ -60,8 +56,31 @@ export const drinkBundle = () => `
 <div class="drink-bundle">
 <div class="drink__title">음료 선택</div>
 </div>`;
-export const categoryList = (type, cost) => `
-<div class="${type}-type__info">
-<span>${type}</span>
-<span>${cost}</span>
+export const categoryList = (type,name, cost) => `
+<div class="${name}-type__info">
+<span><input type='radio'
+name='${name}' 
+value='${cost}'/>${type}</span>
+<span>+${cost}</span>
 </div>`;
+
+
+export const categoryCheckList = (type,name, cost) => `
+<div class="${name}-type__info">
+<span><input type='checkbox'
+name='${name}' 
+value='${cost}'/>${type}</span>
+<span>+${cost}</span>
+</div>`;
+
+export const staticCost = (cost) =>`
+<div class="push-box">
+<div class="push-box__title">
+배달 최소주문 금액 1,000원
+</div>
+<div class="push-box__container">
+<span>담기</span>
+<span>${cost}</span>
+</div>
+<div>
+`;

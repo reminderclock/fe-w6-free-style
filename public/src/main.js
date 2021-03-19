@@ -37,16 +37,15 @@ loadMenuData()
             
             loadOptionData()
             .then((category)=> {
-                console.log(category);
                 mainView.classList.toggle('active');
                 const createOption = new MakeselectOption(selectData, category, optionView);
                 createOption.init();
             })
-
-
         }
     })
 })
+
+
 
 
 

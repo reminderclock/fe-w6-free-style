@@ -7,11 +7,9 @@ export class MakeselectOption{
         this.addCost = 0;
     }
     init() {
-        
-        let sendFousData = this.data.forEach(e => this.creatMenu(e));
+        this.data.forEach(e => this.creatMenu(e));
         this.setBundle();
-        this.data.forEach(e=>this.displayPushBox(e));
-        // this.data.forEach(e=>this.noticeEvent(e));
+        this.data.map(e=>this.displayPushBox(e.cost));
         this.noticeEvent();
     }
     noticeEvent() {
@@ -25,12 +23,10 @@ export class MakeselectOption{
     }
     updateCash(e) {
         this.addCost +=e;
-        console.log(this.addCost.toString())
-        this.displayPushBox(this.addCost.toString());
+        this.displayPushBox(this.addCost);
     }
     displayPushBox(e) {
-        // this.addCost
-        this.selector.innerHTML += staticCost(this.numToCash(e.cost));
+        this.selector.innerHTML += staticCost(this.numToCash(e));
     }
     setBundle() {
         this.selector.innerHTML += breadBundle();
@@ -73,8 +69,6 @@ export class MakeselectOption{
         this.selector.innerHTML += makeInnerInfo(e.imgurl, e.name, e.length, e.type, cost);
     }
     numToCash(num) {
-        console.log(num);
         return num.toLocaleString( 'ko-KR', { style: 'currency', currency: 'KRW' } );
     } 
 }
-

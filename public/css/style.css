@@ -167,7 +167,6 @@ header .sub-info ul li:nth-child(3) {
 
 .option-view {
   text-align: center;
-  padding: 20px;
 }
 .option-view .inner-menu__img {
   text-align: center;
@@ -181,10 +180,12 @@ header .sub-info ul li:nth-child(3) {
   border: 1px solid #d3d3d3;
   border-radius: 10px;
   padding: 20px;
+  margin: 0 20px;
 }
 .option-view .inner__default {
   display: flex;
   justify-content: space-between;
+  margin: 20px 20px;
 }
 .option-view .inner__default span {
   font-size: 20px;

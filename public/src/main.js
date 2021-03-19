@@ -1,7 +1,7 @@
 
 import {MakeBestMenu} from './bestMenu.js';
 import {MakeShortSetMenu} from './shortSetMenu.js';
-import {local, port, menuPath} from './util/data.js';
+import {local, port, menuPath, sandOption} from './util/data.js';
 import {MakeselectOption} from './optionSelect.js';
 const bestMenuContainer = document.querySelector('.best-menu__container');
 const shortSetContainer = document.querySelector('.sandwich-short__set__container');
@@ -14,6 +14,12 @@ function loadMenuData() {
     return fetch(`${local}:${port}${menuPath}`)
     .then(response => response.json())
     .then(json => json.sand__short__set);
+}
+
+function loadOptionData() {
+    return fetch(`${local}:${port}${sandOption}`)
+    .then(response => response.json());
+    // .then(json => json.sand__short__set);
 }
 
 loadMenuData()
@@ -29,9 +35,14 @@ loadMenuData()
         if(target.closest('.best-menu__bundle').className === 'best-menu__bundle') {
             let selectData = menu.filter(e => menuTitle.includes(e.name));
             
-            mainView.classList.toggle('active');
-            const createOption = new MakeselectOption(selectData, optionView);
-            createOption.init();
+            loadOptionData()
+            .then((category)=> {
+                console.log(category);
+                mainView.classList.toggle('active');
+                const createOption = new MakeselectOption(selectData, category, optionView);
+                createOption.init();
+            })
+
 
         }
     })

@@ -15,3 +15,53 @@ export const makeInnerInfo = (imgurl, name, length, type, cost) => `
 <span>기본</span>
 <span>${cost}</span>
 </div>`;
+
+// export const breadBundle = (name) => `
+// <div class="bread-bundle">
+// <div class="bread__title">${name}</div>
+// </div>`;
+
+export const breadBundle = () => `
+<div class="bread-bundle">
+<div class="bread__title">빵 선택</div>
+</div>`;
+
+export const chesseBundle = () => `
+<div class="chesse-bundle">
+<div class="chesse__title">치즈 선택</div>
+</div>`;
+
+export const addBundle = () => `
+<div class="add-bundle">
+<div class="add__title">재료 추가 선택</div>
+</div>`;
+
+export const toastBundle = () => `
+<div class="toast-bundle">
+<div class="toast__title">빵/미트 토스팅 선택</div>
+</div>`;
+
+export const veggieBundle = () => `
+<div class="veggie-bundle">
+<div class="veggie__title">아채 제외(최대 8개)</div>
+</div>`;
+
+export const sourceBundle = () => `
+<div class="source-bundle">
+<div class="source__title">소스 선택(1개 필수 선택)</div>
+</div>`;
+
+export const cookieBundle = () => `
+<div class="cookie-bundle">
+<div class="cookie__title">쿠키 또는 칩 선택</div>
+</div>`;
+
+export const drinkBundle = () => `
+<div class="drink-bundle">
+<div class="drink__title">음료 선택</div>
+</div>`;
+export const categoryList = (type, cost) => `
+<div class="${type}-type__info">
+<span>${type}</span>
+<span>${cost}</span>
+</div>`;

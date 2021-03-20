@@ -5,7 +5,14 @@ export class MakeselectOption{
         this.subOptionData = newData;
         this.selector = selector;
         this.addCost = 0;
-        this.addSelect = [];
+        this.ingredientArr = [];
+        this.breadArr = [];
+        this.chesseArr = [];
+        this.toastArr = [];
+        this.veggieArr = [];
+        this.sourceArr = [];
+        this.cookieArr = [];
+        this.drinkArr = [];
         this.menuCnt = 1;
         this.minCost = 10000;
         this.defaultChecked = ["화이트", "아메리칸치즈", "토스팅", "초코칩 쿠키", "코카콜라"];
@@ -16,34 +23,96 @@ export class MakeselectOption{
         this.data.map(e=>this.displayPushBox(e.cost));
         this.noticeEvent();
     }
+    filterSoureData(target) {
+        let targetCost = this.subOptionData.source
+        .filter(e => e.type === target.value)
+        .map(e => e.cost).join('');
+        this.checkOption(target, targetCost);
+    }
+    filterIngredientData(target) {
+        let targetCost = this.subOptionData.addIngredient
+        .filter(e => e.type === target.value)
+        .map(e => e.cost).join('');
+        this.checkOption(target, targetCost);
+    }
+    checkCategory(target) {
+        switch(target.name) {
+            case "bread":
+                return this.breadArr;
+            case "chesse":
+                return this.chesseArr;
+            case "ingredient":
+                return this.ingredientArr;
+            case "toast":
+                return this.toastArr;
+            case "veggie":
+                return this.veggieArr;
+            case "source":
+                return this.sourceArr;
+            case "cookie":
+                return this.cookieArr;
+            case "drink":
+                return this.drinkArr;
+            default:
+                return;
+        }
+    }
+    checkOption(target, targetCost) {
+        if(target.checked) {
+            // let targetArr = this.checkCategory(target);
+            if(this.checkCategory(target).includes(target.value)) return;
+            // if(this.ingredientArr.includes(target.value)) return;
+            this.checkCategory(target).push(target.value);
+            return this.updateCash(parseInt(targetCost));
+        }
+        // 체크 되있지 않을 경우, 배열 저장 값 빼주기
+        else {
+            if(this.checkCategory(target).includes(target.value)){
+                let removeTarget =this.checkCategory(target).filter(e => e === target.value);
+                const findIndex1 = this.checkCategory(target).findIndex(e => e === removeTarget);
+                let arr = this.checkCategory(target);
+                if(arr.length === 1) {
+                    this.checkCategory(target).splice(0);
+                }
+                else {
+                    this.checkCategory(target).splice(findIndex1, 1);
+                }
+            }
+            // 원래 가격에서 해제 되었을 때 가격 빼주는 부분
+            this.addCost = this.addCost-targetCost;
+            this.displayUpdateCash(this.addCost);
+        }
+    }
     noticeEvent() {
         document.addEventListener('click', ({target})=> {
-            if(target.name !== "ingredient") return;
-            let targetCost = this.subOptionData.addIngredient
-            .filter(e => e.type === target.value)
-            .map(e => e.cost).join('');
-            if(target.checked) {
-                if(this.addSelect.includes(target.value)) return;
-                this.addSelect.push(target.value);
-                return this.updateCash(parseInt(targetCost));
-            }
-            // 체크 되있지 않을 경우, 배열 저장 값 빼주기
-            else {
-                if(this.addSelect.includes(target.value)){
-                    let removeTarget =this.addSelect.filter(e => e !== target.value);
-                    this.addSelect = removeTarget;
-                }
-                // 원래 가격에서 해제 되었을 때 가격 빼주는 부분
-                this.addCost = this.addCost-targetCost;
-                this.displayUpdateCash(this.addCost);
-            }
+            if(target.name === "source") return this.filterSoureData(target);
+            if(target.name === "ingredient") return this.filterIngredientData(target);
+            // if(target.name !== "ingredient") return;
+            // let targetCost = this.subOptionData.addIngredient
+            // .filter(e => e.type === target.value)
+            // .map(e => e.cost).join('');
+            // if(target.checked) {
+            //     if(this.ingredientArr.includes(target.value)) return;
+            //     this.addSelect.push(target.value);
+            //     return this.updateCash(parseInt(targetCost));
+            // }
+            // // 체크 되있지 않을 경우, 배열 저장 값 빼주기
+            // else {
+            //     if(this.addSelect.includes(target.value)){
+            //         let removeTarget =this.addSelect.filter(e => e !== target.value);
+            //         this.addSelect = removeTarget;
+            //     }
+            //     // 원래 가격에서 해제 되었을 때 가격 빼주는 부분
+            //     this.addCost = this.addCost-targetCost;
+            //     this.displayUpdateCash(this.addCost);
+            // }
         })
     }
     // 금액 업데이트 뷰 되는 부분
     displayUpdateCash(a) {
         const pushCostBox = document.querySelector('.push-box__cost');
         pushCostBox.value = `${this.menuCnt}담기     ${this.numToCash(a)}`;
-        (a>=this.minCost) ? pushCostBox.disabled = false : pushCostBox.disabled = 'disabled';
+        (a>=this.minCost && this.sourceArr.length !== 0) ? pushCostBox.disabled = false : pushCostBox.disabled = 'disabled';
     }
     // 금액 더해주는 부분 
     updateCash(e) {

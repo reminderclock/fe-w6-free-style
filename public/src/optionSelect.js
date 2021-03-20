@@ -5,6 +5,7 @@ export class MakeselectOption{
         this.subOptionData = newData;
         this.selector = selector;
         this.addCost = 0;
+        this.addSelect = [];
     }
     init() {
         this.data.forEach(e => this.creatMenu(e));
@@ -14,7 +15,21 @@ export class MakeselectOption{
     }
     noticeEvent() {
         document.addEventListener('click', ({target})=> {
-            return this.updateCash(this.cashToNum(target.value));
+
+            if(target.checked) {
+                if(this.addSelect.includes(target.name)) return;
+                this.addSelect.push(target.name);
+                return this.updateCash(this.cashToNum(target.value));
+            }
+            else {
+                if(this.addSelect.includes(target.name)){
+                    let removeTarget =this.addSelect.filter(e => e !== target.name);
+                    this.addSelect = removeTarget;
+                }
+                this.addCost = this.addCost-this.cashToNum(target.value);
+                this.displayUpdateCash(this.addCost);
+            }
+
         })
     }
     displayUpdateCash(a) {

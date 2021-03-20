@@ -59,7 +59,7 @@ export const drinkBundle = () => `
 export const categoryList = (type,name, cost) => `
 <div class="${name}-type__info">
 <span><input type='radio'
-name='${name}' 
+name='${type}' 
 value='${cost}'/>${type}</span>
 <span>+${cost}</span>
 </div>`;
@@ -68,7 +68,7 @@ value='${cost}'/>${type}</span>
 export const categoryCheckList = (type,name, cost) => `
 <div class="${name}-type__info">
 <span><input type='checkbox'
-name='${name}' 
+name='${type}' 
 value='${cost}'/>${type}</span>
 <span>+${cost}</span>
 </div>`;

@@ -1,4 +1,4 @@
-import {costSpaceLine, categoryCheckList, staticCost, breadBundle, chesseBundle, addBundle, veggieBundle, toastBundle, sourceBundle, cookieBundle, drinkBundle, categoryList, makeInnerInfo} from './util/htmlTemplate.js';
+import {categoryCheckList, staticCost, breadBundle, chesseBundle, addBundle, veggieBundle, toastBundle, sourceBundle, cookieBundle, drinkBundle, categoryList, makeInnerInfo} from './util/htmlTemplate.js';
 export class MakeselectOption{
     constructor(data, newData, selector) {
         this.data = data;
@@ -8,7 +8,6 @@ export class MakeselectOption{
         this.addSelect = [];
         this.menuCnt = 1;
         this.minCost = 10000;
-        // this.checkBoxList = [];
     }
     init() {
         this.data.forEach(e => this.creatMenu(e));
@@ -19,22 +18,31 @@ export class MakeselectOption{
     noticeEvent() {
         document.addEventListener('click', ({target})=> {
 
+            if(target.name !== "ingredient") return;
+            let targetCost = this.subOptionData.addIngredient
+            .filter(e => e.type === target.value)
+            .map(e => e.cost).join('');
+            console.log(targetCost);
             if(target.checked) {
-                if(this.addSelect.includes(target.name)) return;
-                this.addSelect.push(target.name);
-                return this.updateCash(this.cashToNum(target.value));
+                console.log(targetCost)
+                if(this.addSelect.includes(target.value)) return;
+                console.log(targetCost)
+                this.addSelect.push(target.value);
+                return this.updateCash(parseInt(targetCost));
             }
+            // 체크 되있지 않을 경우, 배열 저장 값 빼주기
             else {
-                if(this.addSelect.includes(target.name)){
-                    let removeTarget =this.addSelect.filter(e => e !== target.name);
+                if(this.addSelect.includes(target.value)){
+                    let removeTarget =this.addSelect.filter(e => e !== target.value);
                     this.addSelect = removeTarget;
                 }
-                this.addCost = this.addCost-this.cashToNum(target.value);
+                // 원래 가격에서 해제 되었을 때 가격 빼주는 부분
+                this.addCost = this.addCost-targetCost;
                 this.displayUpdateCash(this.addCost);
             }
-
         })
     }
+    // 금액 업데이트 뷰 되는 부분
     displayUpdateCash(a) {
         const pushCostBox = document.querySelector('.push-box__cost');
         pushCostBox.value = `${this.menuCnt}담기     ${this.numToCash(a)}`;
@@ -44,8 +52,10 @@ export class MakeselectOption{
         let a = c.substr(1).replace(",","");
         return parseInt(a);
     }
+    // 금액 더해주는 부분 
     updateCash(e) {
         this.addCost +=e;
+        // this.displayPushBox(this.addCost);
         this.displayUpdateCash(this.addCost);
     }
     displayPushBox(e) {

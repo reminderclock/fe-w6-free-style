@@ -36,7 +36,6 @@ loadMenuData()
         splitTitle.pop();
         if(target.closest('.best-menu__bundle').className === 'best-menu__bundle') {
             let selectData = menu.filter(e => e.name === splitTitle.join(''));
-            
             loadOptionData()
             .then((category)=> {
                 mainView.classList.toggle('active');

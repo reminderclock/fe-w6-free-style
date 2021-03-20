@@ -59,8 +59,8 @@ export const drinkBundle = () => `
 export const categoryList = (type,name, cost) => `
 <div class="${name}-type__info">
 <span><input type='radio'
-name='${type}' 
-value='${cost}'/>${type}</span>
+name='${name}' 
+value='${type}'/>${type}</span>
 <span>+${cost}</span>
 </div>`;
 
@@ -68,16 +68,16 @@ value='${cost}'/>${type}</span>
 export const categoryCheckList = (type,name, cost) => `
 <div class="${name}-type__info">
 <span><input type='checkbox'
-name='${type}' 
-value='${cost}'/>${type}</span>
+name='${name}' 
+value='${type}'/>${type}</span>
 <span>+${cost}</span>
 </div>`;
-export const costSpaceLine = () => `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
-export const staticCost = (min,cnt,cost) =>`
+const costSpaceLine = () => `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
+export const staticCost = (min, cnt, cost) =>`
 <div class="push-box">
 <div class="push-box__title">
 배달 최소주문 금액 ${min}
 </div>
 <input type="button" class="push-box__cost" value="${cnt}담기${costSpaceLine()}${cost}" disabled="disabled">
 <div>
-`;
+`; 

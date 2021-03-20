@@ -59,18 +59,16 @@ export class MakeselectOption{
     }
     checkOption(target, targetCost) {
         if(target.checked) {
-            // let targetArr = this.checkCategory(target);
             if(this.checkCategory(target).includes(target.value)) return;
-            // if(this.ingredientArr.includes(target.value)) return;
             this.checkCategory(target).push(target.value);
             return this.updateCash(parseInt(targetCost));
         }
         // 체크 되있지 않을 경우, 배열 저장 값 빼주기
         else {
             if(this.checkCategory(target).includes(target.value)){
-                let removeTarget =this.checkCategory(target).filter(e => e === target.value);
-                const findIndex1 = this.checkCategory(target).findIndex(e => e === removeTarget);
+                let removeTarget =this.checkCategory(target).filter(e => e === target.value).join('');
                 let arr = this.checkCategory(target);
+                const findIndex1 = arr.indexOf(removeTarget);
                 if(arr.length === 1) {
                     this.checkCategory(target).splice(0);
                 }
@@ -87,31 +85,13 @@ export class MakeselectOption{
         document.addEventListener('click', ({target})=> {
             if(target.name === "source") return this.filterSoureData(target);
             if(target.name === "ingredient") return this.filterIngredientData(target);
-            // if(target.name !== "ingredient") return;
-            // let targetCost = this.subOptionData.addIngredient
-            // .filter(e => e.type === target.value)
-            // .map(e => e.cost).join('');
-            // if(target.checked) {
-            //     if(this.ingredientArr.includes(target.value)) return;
-            //     this.addSelect.push(target.value);
-            //     return this.updateCash(parseInt(targetCost));
-            // }
-            // // 체크 되있지 않을 경우, 배열 저장 값 빼주기
-            // else {
-            //     if(this.addSelect.includes(target.value)){
-            //         let removeTarget =this.addSelect.filter(e => e !== target.value);
-            //         this.addSelect = removeTarget;
-            //     }
-            //     // 원래 가격에서 해제 되었을 때 가격 빼주는 부분
-            //     this.addCost = this.addCost-targetCost;
-            //     this.displayUpdateCash(this.addCost);
-            // }
         })
     }
     // 금액 업데이트 뷰 되는 부분
     displayUpdateCash(a) {
         const pushCostBox = document.querySelector('.push-box__cost');
         pushCostBox.value = `${this.menuCnt}담기     ${this.numToCash(a)}`;
+        console.log(this.sourceArr);
         (a>=this.minCost && this.sourceArr.length !== 0) ? pushCostBox.disabled = false : pushCostBox.disabled = 'disabled';
     }
     // 금액 더해주는 부분 

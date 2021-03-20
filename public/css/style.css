@@ -208,10 +208,12 @@ header .sub-info ul li:nth-child(3) {
   bottom: 0;
   width: 100%;
   background-color: whitesmoke;
-  height: 50px;
+  padding: 10px;
 }
-.option-view .push-box .push-box__container {
-  background-color: #ddd;
+.option-view .push-box .push-box__cost {
+  padding: 10px 0;
+  padding-left: 20%;
+  width: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */

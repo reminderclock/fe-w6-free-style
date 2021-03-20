@@ -1,4 +1,4 @@
-import {categoryCheckList, staticCost, breadBundle, chesseBundle, addBundle, veggieBundle, toastBundle, sourceBundle, cookieBundle, drinkBundle, categoryList, makeInnerInfo} from './util/htmlTemplate.js';
+import {costSpaceLine, categoryCheckList, staticCost, breadBundle, chesseBundle, addBundle, veggieBundle, toastBundle, sourceBundle, cookieBundle, drinkBundle, categoryList, makeInnerInfo} from './util/htmlTemplate.js';
 export class MakeselectOption{
     constructor(data, newData, selector) {
         this.data = data;
@@ -6,6 +6,9 @@ export class MakeselectOption{
         this.selector = selector;
         this.addCost = 0;
         this.addSelect = [];
+        this.menuCnt = 1;
+        this.minCost = 10000;
+        // this.checkBoxList = [];
     }
     init() {
         this.data.forEach(e => this.creatMenu(e));
@@ -34,7 +37,8 @@ export class MakeselectOption{
     }
     displayUpdateCash(a) {
         const pushCostBox = document.querySelector('.push-box__cost');
-        pushCostBox.innerText = this.numToCash(a);
+        pushCostBox.value = `${this.menuCnt}담기     ${this.numToCash(a)}`;
+        (a>=this.minCost) ? pushCostBox.disabled = false : pushCostBox.disabled = 'disabled';
     }
     cashToNum(c) {
         let a = c.substr(1).replace(",","");
@@ -45,7 +49,7 @@ export class MakeselectOption{
         this.displayUpdateCash(this.addCost);
     }
     displayPushBox(e) {
-        this.selector.innerHTML += staticCost(this.numToCash(e));
+        this.selector.innerHTML += staticCost(this.numToCash(this.minCost),this.menuCnt,this.numToCash(e));
     }
     setBundle() {
         this.selector.innerHTML += breadBundle();

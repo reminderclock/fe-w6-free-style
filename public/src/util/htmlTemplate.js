@@ -72,15 +72,12 @@ name='${type}'
 value='${cost}'/>${type}</span>
 <span>+${cost}</span>
 </div>`;
-
-export const staticCost = (cost) =>`
+export const costSpaceLine = () => `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
+export const staticCost = (min,cnt,cost) =>`
 <div class="push-box">
 <div class="push-box__title">
-배달 최소주문 금액 1,000원
+배달 최소주문 금액 ${min}
 </div>
-<div class="push-box__container">
-<span>담기</span>
-<span class="push-box__cost">${cost}</span>
-</div>
+<input type="button" class="push-box__cost" value="${cnt}담기${costSpaceLine()}${cost}" disabled="disabled">
 <div>
 `;

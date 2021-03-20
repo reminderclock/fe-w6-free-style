@@ -231,9 +231,13 @@ header {
     bottom: 0;
     width: 100%;
     background-color: whitesmoke;
-    height: 50px;
-    .push-box__container {
-      background-color: $menu-bar_color;
+    padding: 10px;
+    // height: 50px;
+    .push-box__cost {
+      padding: 10px 0;
+      padding-left: 20%;
+      width: 100%;
+      // background-color: $menu-bar_color;
     }
   }
 }

@@ -56,11 +56,11 @@ export const drinkBundle = () => `
 <div class="drink-bundle">
 <div class="drink__title">음료 선택</div>
 </div>`;
-export const categoryList = (type,name, cost) => `
+export const categoryList = (check,type,name, cost) => `
 <div class="${name}-type__info">
 <span><input type='radio'
 name='${name}' 
-value='${type}'/>${type}</span>
+value='${type}'${check}/>${type}</span>
 <span>+${cost}</span>
 </div>`;
 

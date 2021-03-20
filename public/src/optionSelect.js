@@ -8,6 +8,7 @@ export class MakeselectOption{
         this.addSelect = [];
         this.menuCnt = 1;
         this.minCost = 10000;
+        this.defaultChecked = ["화이트", "아메리칸치즈", "토스팅", "초코칩 쿠키", "코카콜라"];
     }
     init() {
         this.data.forEach(e => this.creatMenu(e));
@@ -17,16 +18,12 @@ export class MakeselectOption{
     }
     noticeEvent() {
         document.addEventListener('click', ({target})=> {
-
             if(target.name !== "ingredient") return;
             let targetCost = this.subOptionData.addIngredient
             .filter(e => e.type === target.value)
             .map(e => e.cost).join('');
-            console.log(targetCost);
             if(target.checked) {
-                console.log(targetCost)
                 if(this.addSelect.includes(target.value)) return;
-                console.log(targetCost)
                 this.addSelect.push(target.value);
                 return this.updateCash(parseInt(targetCost));
             }
@@ -48,14 +45,9 @@ export class MakeselectOption{
         pushCostBox.value = `${this.menuCnt}담기     ${this.numToCash(a)}`;
         (a>=this.minCost) ? pushCostBox.disabled = false : pushCostBox.disabled = 'disabled';
     }
-    cashToNum(c) {
-        let a = c.substr(1).replace(",","");
-        return parseInt(a);
-    }
     // 금액 더해주는 부분 
     updateCash(e) {
         this.addCost +=e;
-        // this.displayPushBox(this.addCost);
         this.displayUpdateCash(this.addCost);
     }
     displayPushBox(e) {
@@ -93,8 +85,12 @@ export class MakeselectOption{
     displaycheckOption(bread, box) {
         box.innerHTML += categoryCheckList(bread.type,bread.name, this.numToCash(bread.cost));
     } 
-    displayRadioOption(bread, box) {
-        box.innerHTML += categoryList(bread.type,bread.name, this.numToCash(bread.cost));
+    // 하나만 선택
+    displayRadioOption(radioMenu, box) {
+    if(this.defaultChecked.includes(radioMenu.type)) {
+    return box.innerHTML += categoryList('checked',radioMenu.type,radioMenu.name, this.numToCash(radioMenu.cost));
+    }
+        box.innerHTML += categoryList("",radioMenu.type,radioMenu.name, this.numToCash(radioMenu.cost));
     } 
     creatMenu(e) {
         this.addCost = e.cost;

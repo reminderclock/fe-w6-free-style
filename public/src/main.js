@@ -32,8 +32,10 @@ loadMenuData()
 
     shortSetContainer.addEventListener('click', ({target}) => {
         let menuTitle = target.closest('.best-menu__bundle').children[1].innerText;
+        let splitTitle = menuTitle.split("(");
+        splitTitle.pop();
         if(target.closest('.best-menu__bundle').className === 'best-menu__bundle') {
-            let selectData = menu.filter(e => menuTitle.includes(e.name));
+            let selectData = menu.filter(e => e.name === splitTitle.join(''));
             
             loadOptionData()
             .then((category)=> {

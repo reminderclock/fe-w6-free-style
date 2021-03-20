@@ -14,8 +14,12 @@ export class MakeselectOption{
     }
     noticeEvent() {
         document.addEventListener('click', ({target})=> {
-            this.updateCash(this.cashToNum(target.value));
+            return this.updateCash(this.cashToNum(target.value));
         })
+    }
+    displayUpdateCash(a) {
+        const pushCostBox = document.querySelector('.push-box__cost');
+        pushCostBox.innerText = this.numToCash(a);
     }
     cashToNum(c) {
         let a = c.substr(1).replace(",","");
@@ -23,7 +27,7 @@ export class MakeselectOption{
     }
     updateCash(e) {
         this.addCost +=e;
-        this.displayPushBox(this.addCost);
+        this.displayUpdateCash(this.addCost);
     }
     displayPushBox(e) {
         this.selector.innerHTML += staticCost(this.numToCash(e));

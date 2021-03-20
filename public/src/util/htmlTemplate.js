@@ -80,7 +80,7 @@ export const staticCost = (cost) =>`
 </div>
 <div class="push-box__container">
 <span>담기</span>
-<span>${cost}</span>
+<span class="push-box__cost">${cost}</span>
 </div>
 <div>
 `;

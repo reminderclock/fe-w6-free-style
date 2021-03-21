@@ -16,7 +16,7 @@ export const makeInnerInfo = (imgurl, name, length, type, cost) => `
 <span>${cost}</span>
 </div>`;
 
-
+export const categoryBundleList = ["breadBundle", "chesseBundle", "addBundle", "toastBundle", "veggieBundle", "sourceBundle", "cookieBundle", "drinkBundle"];
 export const breadBundle = () => `
 <div class="bread-bundle">
 <div class="bread__title">빵 선택</div>

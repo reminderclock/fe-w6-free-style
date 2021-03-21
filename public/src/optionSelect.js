@@ -1,5 +1,5 @@
 import {cntBox, categoryCheckList, staticCost, breadBundle, chesseBundle, addBundle, veggieBundle, toastBundle, sourceBundle, cookieBundle, drinkBundle, categoryList, makeInnerInfo} from './util/htmlTemplate.js';
-export class MakeselectOption{
+export class MenuOptionMaker{
     constructor(data, newData, selector) {
         this.data = data;
         this.subOptionData = newData;
@@ -22,7 +22,7 @@ export class MakeselectOption{
         this.data.forEach(e => this.creatMenu(e));
         this.setBundle();
         this.data.map(e=>this.displayPushBox(e.cost));
-        this.noticeEvent();
+        this.addEventListener();
         this.checkCnt();
     }
     checkCnt() {
@@ -86,8 +86,15 @@ export class MakeselectOption{
             this.displayUpdateCash(this.addCost);
         }
     }
-    noticeEvent() {
+    // checkCnt(target) {
+    //     if(target.classList.contains('fa-plus')) return this.addCnt();
+    //     else if(target.classList.contains('fa-mius')) return this.shiftCnt()
+    // }
+    // addCnt()
+    addEventListener() {
         document.addEventListener('click', ({target})=> {
+            // console.log(target.classList.contains('fa-plus'));
+            // if(target.closest("div"))return this.checkCnt(target);
             if(target.name === "source") return this.filterSoureData(target);
             if(target.name === "ingredient") return this.filterIngredientData(target);
         })
@@ -108,14 +115,8 @@ export class MakeselectOption{
         this.selector.innerHTML += staticCost(this.numToCash(this.minCost),this.menuCnt,this.numToCash(e));
     }
     setBundle() {
-        this.selector.innerHTML += breadBundle();
-        this.selector.innerHTML += chesseBundle();
-        this.selector.innerHTML += addBundle();
-        this.selector.innerHTML += toastBundle();
-        this.selector.innerHTML += veggieBundle();
-        this.selector.innerHTML += sourceBundle();
-        this.selector.innerHTML += cookieBundle();
-        this.selector.innerHTML += drinkBundle();
+        const optionBundleList = [breadBundle, chesseBundle, addBundle, veggieBundle, toastBundle, sourceBundle, cookieBundle, drinkBundle];
+        optionBundleList.forEach(fn =>this.selector.innerHTML += fn());
         const breadBox = document.querySelector('.bread-bundle');
         const chesseBox = document.querySelector('.chesse-bundle');
         const addBox = document.querySelector('.add-bundle');
@@ -127,14 +128,14 @@ export class MakeselectOption{
         this.splitCategoryData(breadBox, chesseBox, addBox, toastBox, veggieBox, sourceBox, cookieBox, drinkBox);
     }
     splitCategoryData(breadBox, chesseBox, addBox, toastBox, veggieBox, sourceBox, cookieBox, drinkBox) {
-        this.subOptionData.bread.map(e => this.displayRadioOption(e, breadBox));
-        this.subOptionData.chesse.map(e => this.displayRadioOption(e, chesseBox));
-        this.subOptionData.addIngredient.map(e => this.displaycheckOption(e, addBox));
-        this.subOptionData.toast.map(e => this.displayRadioOption(e, toastBox));
-        this.subOptionData.exceptVeggie.map(e => this.displaycheckOption(e, veggieBox));
-        this.subOptionData.source.map(e => this.displaycheckOption(e, sourceBox));
-        this.subOptionData.cookie.map(e => this.displayRadioOption(e, cookieBox));
-        this.subOptionData.drink.map(e => this.displayRadioOption(e, drinkBox));
+        this.subOptionData.bread.forEach(e => this.displayRadioOption(e, breadBox));
+        this.subOptionData.chesse.forEach(e => this.displayRadioOption(e, chesseBox));
+        this.subOptionData.addIngredient.forEach(e => this.displaycheckOption(e, addBox));
+        this.subOptionData.toast.forEach(e => this.displayRadioOption(e, toastBox));
+        this.subOptionData.exceptVeggie.forEach(e => this.displaycheckOption(e, veggieBox));
+        this.subOptionData.source.forEach(e => this.displaycheckOption(e, sourceBox));
+        this.subOptionData.cookie.forEach(e => this.displayRadioOption(e, cookieBox));
+        this.subOptionData.drink.forEach(e => this.displayRadioOption(e, drinkBox));
     }
     displaycheckOption(bread, box) {
         box.innerHTML += categoryCheckList(bread.type,bread.name, this.numToCash(bread.cost));

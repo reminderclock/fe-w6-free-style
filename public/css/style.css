@@ -16,9 +16,18 @@ body {
 }
 
 .nav__bar {
+  position: fixed;
+  background-color: whitesmoke;
+  z-index: 2;
+  top: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
+}
+
+.main-view {
+  padding-top: 40px;
 }
 
 header {
@@ -203,8 +212,16 @@ header .sub-info ul li:nth-child(3) {
   display: flex;
   justify-content: space-between;
 }
+.option-view .bread-bundle,
+.option-view .chesse-bundle,
+.option-view .add-bundle,
+.option-view .toast-bundle,
+.option-view .veggie-bundle,
+.option-view .source-bundle,
+.option-view .cookie-bundle,
 .option-view .drink-bundle {
-  padding-bottom: 100px;
+  padding: 20px 0;
+  border-top: 1px solid #ddd;
 }
 .option-view .push-box {
   position: fixed;
@@ -218,6 +235,24 @@ header .sub-info ul li:nth-child(3) {
   padding: 10px 0;
   padding-left: 20%;
   width: 100%;
+}
+.option-view .cnt-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  padding-bottom: 100px;
+  border: 1px solid #ddd;
+}
+.option-view .cnt-box .cnt-box__content {
+  display: flex;
+  justify-content: space-between;
+  border-radius: 30px;
+  border: 1px solid #d3d3d3;
+  padding: 5px;
+}
+.option-view .cnt-box .cnt-box__content li {
+  margin: 5px 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

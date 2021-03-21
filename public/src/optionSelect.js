@@ -1,4 +1,4 @@
-import {categoryCheckList, staticCost, breadBundle, chesseBundle, addBundle, veggieBundle, toastBundle, sourceBundle, cookieBundle, drinkBundle, categoryList, makeInnerInfo} from './util/htmlTemplate.js';
+import {cntBox, categoryCheckList, staticCost, breadBundle, chesseBundle, addBundle, veggieBundle, toastBundle, sourceBundle, cookieBundle, drinkBundle, categoryList, makeInnerInfo} from './util/htmlTemplate.js';
 export class MakeselectOption{
     constructor(data, newData, selector) {
         this.data = data;
@@ -16,12 +16,17 @@ export class MakeselectOption{
         this.menuCnt = 1;
         this.minCost = 10000;
         this.defaultChecked = ["화이트", "아메리칸치즈", "토스팅", "초코칩 쿠키", "코카콜라"];
+
     }
     init() {
         this.data.forEach(e => this.creatMenu(e));
         this.setBundle();
         this.data.map(e=>this.displayPushBox(e.cost));
         this.noticeEvent();
+        this.checkCnt();
+    }
+    checkCnt() {
+        this.selector.innerHTML += cntBox(this.menuCnt);
     }
     filterSoureData(target) {
         let targetCost = this.subOptionData.source

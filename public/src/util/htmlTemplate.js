@@ -81,3 +81,14 @@ export const staticCost = (min, cnt, cost) =>`
 <input type="button" class="push-box__cost" value="${cnt}담기${costSpaceLine()}${cost}" disabled="disabled">
 <div>
 `; 
+
+export const cntBox = (cnt) =>`
+<div class="cnt-box">
+<div class="cnt-box__title">수량</div>
+<ul class="cnt-box__content">
+<li class="minus"><i class="fas fa-minus"></i></li>
+<li>${cnt}개</li>
+<li class="plus"><i class="fas fa-plus"></i></li>
+</ul>
+</div>
+`; 

@@ -16,6 +16,7 @@ export class MenuOptionMaker{
         this.menuCnt = 1;
         this.minCost = 10000;
         this.defaultChecked = ["화이트", "아메리칸치즈", "토스팅", "초코칩 쿠키", "코카콜라"];
+        this.updateCost = 0;
 
     }
     init() {
@@ -86,24 +87,37 @@ export class MenuOptionMaker{
             this.displayUpdateCash(this.addCost);
         }
     }
-    // checkCnt(target) {
-    //     if(target.classList.contains('fa-plus')) return this.addCnt();
-    //     else if(target.classList.contains('fa-mius')) return this.shiftCnt()
-    // }
-    // addCnt()
+    decideCnt(target) {
+        if(target.classList.contains('fa-plus')) return this.addCnt();
+        else if(target.classList.contains('fa-minus')) return this.shiftCnt();
+        else {
+            console.log(target);
+        }
+    }
+    shiftCnt() {
+        if(this.menuCnt === 1) return;
+        this.menuCnt--;
+        let curr = this.addCost * this.menuCnt;
+        this.displayUpdateCash(curr);
+    }
+    addCnt() {
+        this.menuCnt++;
+        let curr = this.addCost * this.menuCnt;
+        this.displayUpdateCash(curr);
+    }
     addEventListener() {
         document.addEventListener('click', ({target})=> {
             // console.log(target.classList.contains('fa-plus'));
-            // if(target.closest("div"))return this.checkCnt(target);
-            if(target.name === "source") return this.filterSoureData(target);
-            if(target.name === "ingredient") return this.filterIngredientData(target);
+            // console.log(target.closest("div").classList.contains('cnt-box'));
+            if(target.closest("div").classList.contains('cnt-box'))return this.decideCnt(target);
+            else if(target.name === "source") return this.filterSoureData(target);
+            else if(target.name === "ingredient") return this.filterIngredientData(target);
         })
     }
     // 금액 업데이트 뷰 되는 부분
     displayUpdateCash(a) {
         const pushCostBox = document.querySelector('.push-box__cost');
         pushCostBox.value = `${this.menuCnt}담기     ${this.numToCash(a)}`;
-        console.log(this.sourceArr);
         (a>=this.minCost && this.sourceArr.length !== 0) ? pushCostBox.disabled = false : pushCostBox.disabled = 'disabled';
     }
     // 금액 더해주는 부분 

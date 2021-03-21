@@ -31,7 +31,12 @@ function displayShortSetMenu(menu) {
     const shortSetMenuMaker = new ShortSetMenuMaker(menu, shortSetContainer, toogleBtn)
     shortSetMenuMaker.init();
 }
-function displayOptionSelect(menu) {
+function displayOptionSelect(selectData, category) {
+    mainView.classList.toggle('active');
+    const menuOptionMaker = new MenuOptionMaker(selectData, category, optionView);
+    menuOptionMaker.init();
+}
+function catchSelectData(menu) {
         shortSetContainer.addEventListener('click', ({target}) => {
         let menuTitle = target.closest('.best-menu__bundle').children[1].innerText;
         let splitTitle = menuTitle.split("(");
@@ -40,18 +45,17 @@ function displayOptionSelect(menu) {
             let selectData = menu.filter(e => e.name === splitTitle.join(''));
             loadOptionData()
             .then((category)=> {
-                mainView.classList.toggle('active');
-                const menuOptionMaker = new MenuOptionMaker(selectData, category, optionView);
-                menuOptionMaker.init();
+                displayOptionSelect(selectData,category);
             })
         }
     })
 }
+
 loadMenuData()
 .then((menu) => {
     displayBestMenu(menu);
     displayShortSetMenu(menu);
-    displayOptionSelect(menu);
+    catchSelectData(menu);
 })
 
 

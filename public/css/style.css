@@ -28,6 +28,27 @@ body {
 
 .main-view {
   padding-top: 40px;
+  position: relative;
+}
+.main-view .basket {
+  position: fixed;
+  left: 82%;
+  top: 580px;
+  background-color: #1dbab4;
+  border-radius: 50%;
+  padding: 15px;
+}
+.main-view .basket i {
+  color: whitesmoke;
+}
+.main-view .basket .basket__cnt {
+  background-color: whitesmoke;
+  border-radius: 50%;
+  padding: 0 7px;
+  top: 10px;
+  left: 25px;
+  font-size: 5px;
+  position: absolute;
 }
 
 header {
@@ -253,6 +274,10 @@ header .sub-info ul li:nth-child(3) {
 }
 .option-view .cnt-box .cnt-box__content li {
   margin: 5px 10px;
+}
+
+.option-view.active {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

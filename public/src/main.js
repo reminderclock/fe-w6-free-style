@@ -10,6 +10,13 @@ const toogleBtn = document.querySelector('.menu__title__toggle');
 const mainView = document.querySelector('.main-view');
 const optionView = document.querySelector('.option-view');
 
+// const menuInfo = {
+// }
+// menuInfo.name = "비엠티15cm";
+// // const option = {};
+// menuInfo.option = ['a','b','c'];
+// console.log(menuInfo);
+
 function loadMenuData() {
     return fetch(`${local}:${port}${menuPath}`)
     .then(response => response.json())

@@ -1,23 +1,26 @@
 import {cntBox, categoryCheckList, staticCost, breadBundle, chesseBundle, addBundle, veggieBundle, toastBundle, sourceBundle, cookieBundle, drinkBundle, categoryList, makeInnerInfo} from './util/htmlTemplate.js';
+import {OrderCheckMaker} from './ordercheck.js';
+const orderView = document.querySelector('.order-view');
 export class MenuOptionMaker{
-    constructor(data, newData, selector) {
+    constructor(data, newData, selector, orderView) {
         this.data = data;
         this.subOptionData = newData;
         this.selector = selector;
+        this.orderView = orderView;
         this.addCost = 0;
         this.ingredientArr = [];
-        this.breadArr = [];
-        this.chesseArr = [];
-        this.toastArr = [];
+        this.breadArr = ["화이트"];
+        this.chesseArr = ["아메리칸치즈"];
+        this.toastArr = ["토스팅"];
         this.veggieArr = [];
         this.sourceArr = [];
-        this.cookieArr = [];
-        this.drinkArr = [];
+        this.cookieArr = ["초코칩 쿠키"];
+        this.drinkArr = ["코카콜라"];
         this.menuCnt = 1;
         this.minCost = 10000;
         this.defaultChecked = ["화이트", "아메리칸치즈", "토스팅", "초코칩 쿠키", "코카콜라"];
         this.updateCost = 0;
-
+        this.totalOption = {};
     }
     init() {
         this.data.forEach(e => this.creatMenu(e));
@@ -41,6 +44,15 @@ export class MenuOptionMaker{
         .map(e => e.cost).join('');
         this.checkOption(target, targetCost);
     }
+    filterViggieData(target) {
+        let targetCost = this.subOptionData.exceptVeggie
+        .filter(e => e.type === target.value)
+        .map(e => e.cost).join('');
+        this.checkOption(target, targetCost);
+    }
+
+
+
     checkCategory(target) {
         switch(target.name) {
             case "bread":
@@ -61,6 +73,12 @@ export class MenuOptionMaker{
                 return this.drinkArr;
             default:
                 return;
+        }
+    }
+    radioOption(target) {
+        if(target.checked) {
+            this.checkCategory(target).pop();
+            this.checkCategory(target).push(target.value);
         }
     }
     checkOption(target, targetCost) {
@@ -90,9 +108,6 @@ export class MenuOptionMaker{
     decideCnt(target) {
         if(target.classList.contains('fa-plus')) return this.addCnt();
         else if(target.classList.contains('fa-minus')) return this.shiftCnt();
-        else {
-            console.log(target);
-        }
     }
     shiftCnt() {
         if(this.menuCnt === 1) return;
@@ -105,21 +120,53 @@ export class MenuOptionMaker{
         let curr = this.addCost * this.menuCnt;
         this.displayUpdateCash(curr);
     }
+    creatOrderCheck() {
+        this.selector.classList.add('active');
+        const orderCheckMaker = new OrderCheckMaker(this.newData, this.totalOption, orderView);
+        orderCheckMaker.init();
+    }
     addEventListener() {
+        let radioArr = ["bread", "chesse", "toast","drink","cookie"]
         document.addEventListener('click', ({target})=> {
-            // console.log(target.classList.contains('fa-plus'));
-            // console.log(target.closest("div").classList.contains('cnt-box'));
             if(target.closest("div").classList.contains('cnt-box'))return this.decideCnt(target);
+            if(target.closest("div").classList.contains('push-box'))return this.creatOrderCheck();
+            else if (radioArr.includes(target.name)) return this.radioOption(target);
             else if(target.name === "source") return this.filterSoureData(target);
             else if(target.name === "ingredient") return this.filterIngredientData(target);
+            else if(target.name === "veggie") return this.filterViggieData(target);
+
         })
     }
     // 금액 업데이트 뷰 되는 부분
     displayUpdateCash(a) {
         const pushCostBox = document.querySelector('.push-box__cost');
         pushCostBox.value = `${this.menuCnt}담기     ${this.numToCash(a)}`;
-        (a>=this.minCost && this.sourceArr.length !== 0) ? pushCostBox.disabled = false : pushCostBox.disabled = 'disabled';
+        if(a>=this.minCost && this.sourceArr.length !== 0) {
+            pushCostBox.disabled = false;
+            const basketCnt = document.querySelector('.basket__cnt');
+            basketCnt.innerText = this.menuCnt;
+            return this.data.forEach(e => this.getOrderData(e, this.numToCash(a)));
+        }
+        else {
+            pushCostBox.disabled = "disabled";
+        }
     }
+    getOrderData(e ,totalCost) {
+        this.totalOption.name = `${e.name}(${e.length}${e.type})`;
+        this.totalOption.bread = this.breadArr;
+        this.totalOption.chesse = this.chesseArr;
+        this.totalOption.ingredient = this.ingredientArr;
+        this.totalOption.veggie = this.veggieArr;
+        this.totalOption.toast = this.toastArr
+        this.totalOption.source = this.sourceArr;
+        this.totalOption.cookie = this.cookieArr;
+        this.totalOption.drink = this.drinkArr;
+        this.totalOption.cost = totalCost;
+        this.totalOption.default = e.cost;
+        this.totalOption.menuCnt = this.menuCnt;
+        this.addEventListener();
+    }
+
     // 금액 더해주는 부분 
     updateCash(e) {
         this.addCost +=e;

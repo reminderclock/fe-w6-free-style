@@ -20,6 +20,7 @@ $none-active: #d3d3d3;
 
 body {
   color: $font_color;
+
   font: {
     size: $font_size;
     family: $font_family;
@@ -39,6 +40,29 @@ body {
 }
 .main-view {
   padding-top: 40px;
+  position: relative;
+  .basket {
+    position: fixed;
+    left: 82%;
+    top: 580px;
+    background-color: #1dbab4;
+    border-radius: 50%;
+    padding: 15px;
+
+    // width: 100px;
+    i {
+      color: whitesmoke;
+    }
+    .basket__cnt {
+      background-color: whitesmoke;
+      border-radius: 50%;
+      padding: 0 7px;
+      top: 10px;
+      left: 25px;
+      font-size: 5px;
+      position: absolute;
+    }
+  }
 }
 header {
   padding: 0 20px;
@@ -262,4 +286,7 @@ header {
       }
     }
   }
+}
+.option-view.active {
+  display: none;
 }

@@ -16,7 +16,6 @@ export const makeInnerInfo = (imgurl, name, length, type, cost) => `
 <span>${cost}</span>
 </div>`;
 
-export const categoryBundleList = ["breadBundle", "chesseBundle", "addBundle", "toastBundle", "veggieBundle", "sourceBundle", "cookieBundle", "drinkBundle"];
 export const breadBundle = () => `
 <div class="bread-bundle">
 <div class="bread__title">빵 선택</div>
@@ -92,3 +91,26 @@ export const cntBox = (cnt) =>`
 </ul>
 </div>
 `; 
+
+export const orederView = (name,defaultCost, bread, chesse, ingredient, toast, veggie, source, cookie, drink, cnt,totalCost) => `
+<div class="order-table">
+<div class="order-table__title">
+${name}
+</div>
+<ul class="order-bundle">
+<li>기본:${defaultCost}</li>
+<li>빵 선택: ${bread}</li>
+<li>치즈 선택: ${chesse}</li>
+<li>재료 추가 선택: ${ingredient}</li>
+<li>빵/미트 토스팅 선택: ${toast}</li>
+<li>아체 제외:${veggie}</li>
+<li>소스 선택:${source}</li>
+<li>쿠키 또는 칩 선택:${cookie}</li>
+<li>음료 선택: ${drink}</li>
+<li>수량: ${cnt}</li>
+<li>총 금액: ${totalCost}</li>
+<li></li>
+</ul>
+</div>
+`;
+

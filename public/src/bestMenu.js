@@ -1,8 +1,6 @@
 import {bestMenu} from './util/parser.js';
 import {makeEachMenu} from './util/htmlTemplate.js';
-// console.log(makeEachMenu('a','b','c','d'));
-export const menuName = [];
-class MakeBestMenu {
+class BestMenuMaker {
     constructor(data, selector) {
         this.data = data;
         this.selector = selector;
@@ -17,7 +15,7 @@ class MakeBestMenu {
           });
     }
     creatBestMenu(e) {
-        let cost = this.numToCash(e.cost);
+        const cost = this.numToCash(e.cost);
         this.selector.innerHTML += makeEachMenu(e.imgurl, e.name, e.length, e.type, cost);
     }
     numToCash(num) {
@@ -27,4 +25,4 @@ class MakeBestMenu {
 
 }
 
-export { MakeBestMenu }
+export { BestMenuMaker }

@@ -16,7 +16,6 @@ export const makeInnerInfo = (imgurl, name, length, type, cost) => `
 <span>${cost}</span>
 </div>`;
 
-
 export const breadBundle = () => `
 <div class="bread-bundle">
 <div class="bread__title">빵 선택</div>
@@ -56,11 +55,11 @@ export const drinkBundle = () => `
 <div class="drink-bundle">
 <div class="drink__title">음료 선택</div>
 </div>`;
-export const categoryList = (type,name, cost) => `
+export const categoryList = (check,type,name, cost) => `
 <div class="${name}-type__info">
 <span><input type='radio'
 name='${name}' 
-value='${cost}'/>${type}</span>
+value='${type}'${check}/>${type}</span>
 <span>+${cost}</span>
 </div>`;
 
@@ -69,18 +68,49 @@ export const categoryCheckList = (type,name, cost) => `
 <div class="${name}-type__info">
 <span><input type='checkbox'
 name='${name}' 
-value='${cost}'/>${type}</span>
+value='${type}'/>${type}</span>
 <span>+${cost}</span>
 </div>`;
-
-export const staticCost = (cost) =>`
+const costSpaceLine = () => `&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
+export const staticCost = (min, cnt, cost) =>`
 <div class="push-box">
 <div class="push-box__title">
-배달 최소주문 금액 1,000원
+배달 최소주문 금액 ${min}
 </div>
-<div class="push-box__container">
-<span>담기</span>
-<span>${cost}</span>
-</div>
+<input type="button" class="push-box__cost" value="${cnt}담기${costSpaceLine()}${cost}" disabled="disabled">
 <div>
+`; 
+
+export const cntBox = (cnt) =>`
+<div class="cnt-box">
+<div class="cnt-box__title">수량</div>
+<ul class="cnt-box__content">
+<li class="minus"><i class="fas fa-minus"></i></li>
+<li>${cnt}개</li>
+<li class="plus"><i class="fas fa-plus"></i></li>
+</ul>
+</div>
+`; 
+
+export const orederView = (name,defaultCost, bread, chesse, ingredient, toast, veggie, source, cookie, drink, cnt,totalCost) => `
+<div class="order-table">
+<div class="order-table__title">
+${name}
+</div>
+<ul class="order-bundle">
+<li>기본:${defaultCost}</li>
+<li>빵 선택: ${bread}</li>
+<li>치즈 선택: ${chesse}</li>
+<li>재료 추가 선택: ${ingredient}</li>
+<li>빵/미트 토스팅 선택: ${toast}</li>
+<li>아체 제외:${veggie}</li>
+<li>소스 선택:${source}</li>
+<li>쿠키 또는 칩 선택:${cookie}</li>
+<li>음료 선택: ${drink}</li>
+<li>수량: ${cnt}</li>
+<li>총 금액: ${totalCost}</li>
+<li></li>
+</ul>
+</div>
 `;
+

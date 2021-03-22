@@ -162,22 +162,12 @@
         },
         {
             "name": "source",
-            "type":"스윗 어니언",
-            "cost": 0
-        },
-        {
-            "name": "source",
             "type":"허니머스타드",
             "cost": 0
         },
         {
             "name": "source",
             "type":"스윗 어니언",
-            "cost": 0
-        },
-        {
-            "name": "source",
-            "type":"허니머스타드",
             "cost": 0
         },
         {

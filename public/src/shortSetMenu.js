@@ -1,5 +1,5 @@
 import {makeEachMenu} from './util/htmlTemplate.js';
-export class MakeShortSetMenu{
+export class ShortSetMenuMaker{
     constructor(data, selector, toogleBtn) {
         this.data = data;
         this.selector = selector;
@@ -12,7 +12,7 @@ export class MakeShortSetMenu{
         return this.data.forEach(e => this.creatMenu(e));
     }
     creatMenu(e) {
-        let cost = this.numToCash(e.cost);
+        const cost = this.numToCash(e.cost);
         this.selector.innerHTML += makeEachMenu(e.imgurl, e.name, e.length, e.type, cost);
     }
     numToCash(num) {
